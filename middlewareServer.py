@@ -24,17 +24,17 @@ class MyMiddleWare(object):
 import os
 def app(environ, start_response):
         #Генерируем ответ на запрос
- 	res = environ['PATH_INFO']
-        path = "."+res
- 	if not os.path.isfile(path):
-                path ='./index.html' 
- 	print('...path: ', path)
- 	file = open(path,'rb')
- 	fileContent = file.read()
- 	file.close() 	
+ 		res = environ['PATH_INFO']
+		path = "."+res
+ 		if not os.path.isfile(path):
+			path ='./index.html' 
+ 		print('...path: ', path)
+ 		file = open(path,'rb')
+ 		fileContent = file.read()
+ 		file.close() 	
  		
- 	start_response('200 OK', [('Content-Type', 'text/html')])
- 	return [fileContent.encode()]
+ 		start_response('200 OK', [('Content-Type', 'text/html')])
+ 		return [fileContent.encode()]
 
 
 answer = MyMiddleWare(app)
